@@ -58,6 +58,8 @@ resource "aws_autoscaling_group" "this" {
   health_check_type = local.is_server ? "ELB" : "EC2"
   load_balancers    = local.is_server ? [var.controlplane_loadbalancer] : []
 
+  target_group_arns = var.target_group_arns
+
   dynamic "launch_template" {
     for_each = var.spot ? [] : ["spot"]
 

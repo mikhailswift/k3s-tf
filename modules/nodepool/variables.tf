@@ -218,3 +218,9 @@ variable "dependencies_script" {
   default     = null
   description = "Dependencies script responsible for any pre-node setup, overriding this overrides the default setup and requires AT LEAST the k3s binary and aws cli downloaded before proceeding"
 }
+
+variable "target_group_arns" {
+  type        = set(string)
+  default     = null
+  description = "ARNs of ALB/NLB target groups to attach members of the ASG to"
+}
